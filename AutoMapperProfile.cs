@@ -17,6 +17,8 @@ namespace RPG_Project
             CreateMap<Character, GetCharacterDto>().ForMember(x => x.Skills, x => x.MapFrom(x => x.CharacterSkill.Select(cs => cs.Skill)));
             CreateMap<Weapon, GetWeaponDto>();
             CreateMap<Skill, GetSkillDto>();
+            CreateMap<Product, GetProductDto>();
+            CreateMap<ProductGroup, GetProductGroupDto>();
         }
     }
 }

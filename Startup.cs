@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using RPG_Project.Data;
 using RPG_Project.Helpers;
 using RPG_Project.Services.Character;
+using RPG_Project.Services.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,6 +127,8 @@ namespace RPG_Project
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<ICharacterService, CharacterService>();
+
+            services.AddScoped<IProductService, ProductService>();
 
             //------End: Service------
         }
