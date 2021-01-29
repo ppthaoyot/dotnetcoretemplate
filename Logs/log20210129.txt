@@ -1,0 +1,5 @@
+2021-01-29 11:13:49.878 +07:00 [INF] Starting web host
+2021-01-29 11:30:16.903 +07:00 [INF] Starting web host
+2021-01-29 11:31:12.433 +07:00 [INF] Starting web host
+2021-01-29 11:31:34.086 +07:00 [INF] Start Add Character process.
+2021-01-29 11:31:35.033 +07:00 [INF] End.
