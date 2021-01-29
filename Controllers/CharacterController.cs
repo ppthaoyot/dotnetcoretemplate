@@ -40,10 +40,17 @@ namespace RPG_Project.Controllers
         {
             return Ok(await _charService.AddCharacterSkill(newSkill));
         }
+
         [HttpPost("addcharacter")]
         public async Task<IActionResult> AddCharacter(AddCharacterDto newCharacter)
         {
             return Ok(await _charService.AddCharacter(newCharacter));
+        }
+
+        [HttpPost("addskill")]
+        public async Task<IActionResult> AddSkill(AddSkillDto newSkill)
+        {
+            return Ok(await _charService.AddSkill(newSkill));
         }
     }
 }
