@@ -13,12 +13,29 @@ namespace RPG_Project.Models
 
     public static class ResponseResult
     {
-        public static ServiceResponse<T> Success<T>(T data, string message = "")
+        public static ServiceResponse<T> Success<T>(T data)
+        {
+            return new ServiceResponse<T>
+            {
+                Data = data,
+            };
+        }
+
+        public static ServiceResponse<T> Success<T>(T data, string message)
         {
             return new ServiceResponse<T>
             {
                 Data = data,
                 Message = message
+            };
+        }
+
+        public static ServiceResponse<T> Failure<T>() where T : class
+        {
+            return new ServiceResponse<T>
+            {
+                Data = null,
+                IsSuccess = false,
             };
         }
 

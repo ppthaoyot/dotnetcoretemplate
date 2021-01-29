@@ -11,3 +11,11 @@
 2021-01-29 11:38:38.298 +07:00 [INF] Success.
 2021-01-29 11:38:38.316 +07:00 [INF] End.
 2021-01-29 12:15:07.998 +07:00 [INF] Starting web host
+2021-01-29 13:43:58.655 +07:00 [INF] Starting web host
+2021-01-29 14:07:41.090 +07:00 [INF] Starting web host
+2021-01-29 14:08:39.815 +07:00 [INF] Starting web host
+2021-01-29 14:10:24.066 +07:00 [ERR] This attackerId 9 not found.
+2021-01-29 14:10:30.691 +07:00 [ERR] Object reference not set to an instance of an object.
+2021-01-29 14:10:54.627 +07:00 [ERR] Object reference not set to an instance of an object.
+2021-01-29 14:14:10.194 +07:00 [INF] Starting web host
+2021-01-29 14:38:05.087 +07:00 [INF] Starting web host
