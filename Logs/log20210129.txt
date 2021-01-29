@@ -1,0 +1,21 @@
+2021-01-29 11:13:49.878 +07:00 [INF] Starting web host
+2021-01-29 11:30:16.903 +07:00 [INF] Starting web host
+2021-01-29 11:31:12.433 +07:00 [INF] Starting web host
+2021-01-29 11:31:34.086 +07:00 [INF] Start Add Character process.
+2021-01-29 11:31:35.033 +07:00 [INF] End.
+2021-01-29 11:37:13.412 +07:00 [INF] Starting web host
+2021-01-29 11:38:18.144 +07:00 [INF] Start Add Character process.
+2021-01-29 11:38:19.138 +07:00 [ERR] Duplicated Character Name.
+2021-01-29 11:38:38.096 +07:00 [INF] Start Add Character process.
+2021-01-29 11:38:38.129 +07:00 [INF] Add New Character.
+2021-01-29 11:38:38.298 +07:00 [INF] Success.
+2021-01-29 11:38:38.316 +07:00 [INF] End.
+2021-01-29 12:15:07.998 +07:00 [INF] Starting web host
+2021-01-29 13:43:58.655 +07:00 [INF] Starting web host
+2021-01-29 14:07:41.090 +07:00 [INF] Starting web host
+2021-01-29 14:08:39.815 +07:00 [INF] Starting web host
+2021-01-29 14:10:24.066 +07:00 [ERR] This attackerId 9 not found.
+2021-01-29 14:10:30.691 +07:00 [ERR] Object reference not set to an instance of an object.
+2021-01-29 14:10:54.627 +07:00 [ERR] Object reference not set to an instance of an object.
+2021-01-29 14:14:10.194 +07:00 [INF] Starting web host
+2021-01-29 14:38:05.087 +07:00 [INF] Starting web host
