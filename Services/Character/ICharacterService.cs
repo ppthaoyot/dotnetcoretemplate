@@ -11,7 +11,6 @@ namespace RPG_Project.Services.Character
         Task<ServiceResponse<GetCharacterDto>> GetCharacterById(int characterId);
         Task<ServiceResponse<GetCharacterDto>> AddWeapon(AddWeaponDto newWeapon);
         Task<ServiceResponse<GetCharacterDto>> AddCharacterSkill(AddCharacterSkillDto newSkill);
-        Task<ServiceResponse<GetCharacterDto>> AddCharacter(AddCharacterDto newCharacter);
 
     }
 }

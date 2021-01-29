@@ -121,36 +121,5 @@ namespace RPG_Project.Services.Character
                 return ResponseResult.Failure<GetCharacterDto>(ex.Message);
             }
         }
-
-        public async Task<ServiceResponse<GetCharacterDto>> AddCharacter(AddCharacterDto newCharacter)
-        {
-            _log.LogInformation("Start Add Character process.");
-            var character = await _dBContext.Characters.FirstOrDefaultAsync(x => x.Name == newCharacter.Name.Trim());
-
-            if (!(character is null))
-            {
-                _log.LogError("Duplicated Character Name.");
-                return ResponseResult.Failure<GetCharacterDto>("Duplicated Character Name.");
-            }
-
-            _log.LogInformation("Add New Character.");
-            var addCharacter = new Models.Character
-            {
-                Name = newCharacter.Name,
-                HitPoints = newCharacter.HitPoints,
-                Strength = newCharacter.Strength,
-                Defense = newCharacter.Defense,
-                Intelligence = newCharacter.Intelligence
-            };
-
-            _dBContext.Characters.Add(addCharacter);
-            await _dBContext.SaveChangesAsync();
-            _log.LogInformation("Success.");
-
-            var dto = _mapper.Map<GetCharacterDto>(addCharacter);
-
-            _log.LogInformation("End.");
-            return ResponseResult.Success(dto);
-        }
     }
 }
