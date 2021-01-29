@@ -152,5 +152,33 @@ namespace RPG_Project.Services.Character
             _log.LogInformation("End.");
             return ResponseResult.Success(dto);
         }
+
+        public async Task<ServiceResponse<GetCharacterDto>> AddSkill(AddSkillDto newSkill)
+        {
+            _log.LogInformation("Start Add Skill process.");
+            var skill = await _dBContext.Skills.FirstOrDefaultAsync(x => x.Name == newSkill.Name.Trim());
+
+            if (!(skill is null))
+            {
+                _log.LogError("Duplicated Skill Name.");
+                return ResponseResult.Failure<GetCharacterDto>("Duplicated Skill Name.");
+            }
+
+            _log.LogInformation("Add New Skill.");
+            var addSkill = new Skill
+            {
+                Name = newSkill.Name,
+                Damage = newSkill.Damage,
+            };
+
+            _dBContext.Skills.Add(addSkill);
+            await _dBContext.SaveChangesAsync();
+            _log.LogInformation("Success.");
+
+            var dto = _mapper.Map<GetCharacterDto>(addSkill);
+
+            _log.LogInformation("End.");
+            return ResponseResult.Success(dto);
+        }
     }
 }
