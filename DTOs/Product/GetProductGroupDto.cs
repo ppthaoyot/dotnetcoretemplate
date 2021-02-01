@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using RPG_Project.Models;
 
-namespace RPG_Project.DTOs
+namespace RPG_Project.DTOs.Product
 {
     public class GetProductGroupDto
     {

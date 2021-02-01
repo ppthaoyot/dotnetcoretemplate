@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RPG_Project.DTOs;
+using RPG_Project.DTOs.Product;
 using RPG_Project.Models;
 using System;
 using System.Collections.Generic;
