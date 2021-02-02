@@ -18,6 +18,24 @@ namespace RPG_Project.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("RPG_Project.Models.Bulk.Bulk", b =>
+                {
+                    b.Property<int>("BulkId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BulkCode")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("BulkName")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.HasKey("BulkId");
+
+                    b.ToTable("Bulk");
+                });
+
             modelBuilder.Entity("RPG_Project.Models.Character", b =>
                 {
                     b.Property<int>("Id")
@@ -165,7 +183,7 @@ namespace RPG_Project.Migrations
             modelBuilder.Entity("RPG_Project.Models.Product", b =>
                 {
                     b.HasOne("RPG_Project.Models.ProductGroup", "ProductGroup")
-                        .WithMany("Product")
+                        .WithMany("Products")
                         .HasForeignKey("ProductGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

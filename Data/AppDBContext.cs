@@ -25,6 +25,7 @@ namespace RPG_Project.Data
         public DbSet<ProductGroup> ProductGroups { get; set; }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Bulk> Bulk { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
