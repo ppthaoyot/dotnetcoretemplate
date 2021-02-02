@@ -16,12 +16,18 @@ using Microsoft.OpenApi.Models;
 using RPG_Project.Data;
 using RPG_Project.Helpers;
 using RPG_Project.Services.Character;
-using RPG_Project.Services.Product;
+using RPG_Project.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.OData.Extensions;
+using Microsoft.OData.Edm;
+using Microsoft.AspNet.OData.Builder;
+using RPG_Project.Models;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Net.Http.Headers;
 
 namespace RPG_Project
 {
@@ -48,10 +54,10 @@ namespace RPG_Project
                 builder.AllowAnyOrigin()
                        .AllowAnyMethod()
                        .AllowAnyHeader();
-                builder.WithExposedHeaders("totalAmountRecords");
-                builder.WithExposedHeaders("totalAmountPages");
-                builder.WithExposedHeaders("currentPage");
-                builder.WithExposedHeaders("recordsPerPage");
+                // builder.WithExposedHeaders("totalAmountRecords");
+                // builder.WithExposedHeaders("totalAmountPages");
+                // builder.WithExposedHeaders("currentPage");
+                // builder.WithExposedHeaders("recordsPerPage");
             }));
             //------End: Allow Origins------
 
@@ -68,6 +74,8 @@ namespace RPG_Project
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //------End: DBContext------
 
+            //Odata
+            services.AddOData();
             //------Swagger------
             services.AddSwaggerGen(config =>
             {
@@ -128,9 +136,12 @@ namespace RPG_Project
 
             services.AddScoped<ICharacterService, CharacterService>();
 
-            services.AddScoped<IProductService, ProductService>();
-
+            services.AddScoped<Services.Product.IProductService, Services.Product.ProductService>();
+            services.AddScoped<IBulkService, BulkService>();
             //------End: Service------
+
+            //Add
+            AddFormatters(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -183,7 +194,36 @@ namespace RPG_Project
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                //Add
+                endpoints.EnableDependencyInjection();
+                endpoints.Filter().Count().Expand().OrderBy().MaxTop(100).Select();
+                endpoints.MapODataRoute(routeName: "api", routePrefix: "api", model: GetEdmModel());
             });
         }
+
+        //add IEdmModel
+        private IEdmModel GetEdmModel()
+        {
+            var builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Bulk>("Bulk");
+            return builder.GetEdmModel();
+        }
+        private void AddFormatters(IServiceCollection services)
+        {
+            services.AddMvcCore(options =>
+            {
+                foreach (var outputFormatter in options.OutputFormatters.OfType<OutputFormatter>().Where(x => x.SupportedMediaTypes.Count == 0))
+                {
+                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
+
+                foreach (var inputFormatter in options.InputFormatters.OfType<InputFormatter>().Where(x => x.SupportedMediaTypes.Count == 0))
+                {
+                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
+            }
+            );
+        }
+
     }
 }
