@@ -8,6 +8,8 @@ namespace RPG_Project.Models
         public double TotalAmountPages { get; set; }
         public double CurrentPage { get; set; }
         public double RecordsPerPage { get; set; }
+
+        public int PageIndex { get; set; }
     }
 
     public static class ResponseResultWithPagination
@@ -21,7 +23,8 @@ namespace RPG_Project.Models
                 TotalAmountRecords = paginationResult.TotalAmountRecords,
                 TotalAmountPages = paginationResult.TotalAmountPages,
                 CurrentPage = paginationResult.CurrentPage,
-                RecordsPerPage = paginationResult.RecordsPerPage
+                RecordsPerPage = paginationResult.RecordsPerPage,
+                PageIndex = paginationResult.PageIndex
             };
         }
 

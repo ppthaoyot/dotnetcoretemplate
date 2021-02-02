@@ -12,5 +12,6 @@ namespace RPG_Project.DTOs
         public double TotalAmountPages { get; set; }
         public double CurrentPage { get; set; }
         public double RecordsPerPage { get; set; }
+        public int PageIndex { get; set; }
     }
 }
