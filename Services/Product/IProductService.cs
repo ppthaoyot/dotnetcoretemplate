@@ -15,6 +15,7 @@ namespace RPG_Project.Services.Product
 
         #region Product
         Task<ServiceResponse<List<GetProductDto>>> GetAllProduct();
+        Task<List<GetProductDto>> GetAllProduct2();
         Task<ServiceResponse<GetProductDto>> GetProductById(int productId);
         Task<ServiceResponse<List<GetProductDto>>> AddProduct(AddProductDto newProduct);
         Task<ServiceResponse<GetProductDto>> UpdateProduct(ProductDto request);

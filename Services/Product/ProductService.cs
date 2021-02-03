@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,6 @@ namespace RPG_Project.Services.Product
             _log = log;
         }
         #endregion
-
         #region ProductGroup
         public async Task<ServiceResponse<List<GetProductGroupDto>>> GetAllProductGroup()
         {
@@ -56,12 +56,27 @@ namespace RPG_Project.Services.Product
         {
             var product = await _dBContext.Products
              .Include(x => x.ProductGroup)
-             .AsNoTracking().ToListAsync();
+             .AsNoTracking()
+             .ToListAsync();
 
             var dto = _mapper.Map<List<GetProductDto>>(product);
 
             return ResponseResult.Success(dto);
         }
+
+        //OData test return without ServiceResponse
+        public async Task<List<GetProductDto>> GetAllProduct2()
+        {
+            var product = await _dBContext.Products
+             .Include(x => x.ProductGroup)
+             .AsNoTracking()
+             .ToListAsync();
+
+            var dto = _mapper.Map<List<GetProductDto>>(product);
+
+            return (dto);
+        }
+
         public async Task<ServiceResponse<GetProductDto>> GetProductById(int productId)
         {
             var p = await _dBContext.Products.Include(x => x.ProductGroup).FirstOrDefaultAsync(x => x.Id == productId);

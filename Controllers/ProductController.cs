@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNetCore.Mvc;
 using RPG_Project.DTOs.Product;
 using RPG_Project.Services.Product;
@@ -7,6 +9,7 @@ namespace RPG_Project.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [ODataRoutePrefix("Product")]
     public class ProductController : ControllerBase
     {
         #region Constructor
@@ -17,7 +20,6 @@ namespace RPG_Project.Controllers
             _productService = productService;
         }
         #endregion
-
 
         #region ProductGroup
 
@@ -36,9 +38,17 @@ namespace RPG_Project.Controllers
 
         #region Product
         [HttpGet("getproductall")]
+        [EnableQuery]
         public async Task<IActionResult> GetAllProduct()
         {
             return Ok(await _productService.GetAllProduct());
+        }
+
+        [HttpGet("all2")]
+        [EnableQuery]
+        public async Task<IActionResult> GetAllProduct2()
+        {
+            return Ok(await _productService.GetAllProduct2());
         }
 
         [HttpGet("{productId}")]
