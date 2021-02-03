@@ -124,3 +124,6 @@ D:\Workshop\RPG_Project\RPG_Project\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore
 D:\Workshop\RPG_Project\RPG_Project\bin\Debug\netcoreapp3.1\Microsoft.OData.Core.dll
 D:\Workshop\RPG_Project\RPG_Project\bin\Debug\netcoreapp3.1\Microsoft.OData.Edm.dll
 D:\Workshop\RPG_Project\RPG_Project\bin\Debug\netcoreapp3.1\Microsoft.Spatial.dll
+D:\Workshop\RPG_Project\RPG_Project\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Workshop\RPG_Project\RPG_Project\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Workshop\RPG_Project\RPG_Project\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

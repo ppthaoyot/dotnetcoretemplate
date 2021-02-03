@@ -43,6 +43,8 @@ namespace RPG_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers(mvcOptions => mvcOptions.EnableEndpointRouting = false).AddNewtonsoftJson();
+
             services.AddControllers();
 
             services.AddHttpContextAccessor();
@@ -137,6 +139,7 @@ namespace RPG_Project
             services.AddScoped<ICharacterService, CharacterService>();
 
             services.AddScoped<Services.Product.IProductService, Services.Product.ProductService>();
+
             services.AddScoped<IBulkService, BulkService>();
             //------End: Service------
 
@@ -206,6 +209,7 @@ namespace RPG_Project
         {
             var builder = new ODataConventionModelBuilder();
             builder.EntitySet<Bulk>("Bulk");
+            builder.EntitySet<Product>("Product");
             return builder.GetEdmModel();
         }
         private void AddFormatters(IServiceCollection services)
