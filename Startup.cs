@@ -139,6 +139,7 @@ namespace RPG_Project
             services.AddScoped<ICharacterService, CharacterService>();
 
             services.AddScoped<Services.Product.IProductService, Services.Product.ProductService>();
+
             services.AddScoped<IBulkService, BulkService>();
             //------End: Service------
 
@@ -208,6 +209,7 @@ namespace RPG_Project
         {
             var builder = new ODataConventionModelBuilder();
             builder.EntitySet<Bulk>("Bulk");
+            builder.EntitySet<Product>("Product");
             return builder.GetEdmModel();
         }
         private void AddFormatters(IServiceCollection services)
