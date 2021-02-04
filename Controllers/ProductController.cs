@@ -1,6 +1,9 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNet.OData.Routing;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RPG_Project.DTOs.Product;
 using RPG_Project.Services.Product;
@@ -8,7 +11,7 @@ using RPG_Project.Services.Product;
 namespace RPG_Project.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ODataRoutePrefix("Product")]
     public class ProductController : ControllerBase
     {
@@ -37,14 +40,14 @@ namespace RPG_Project.Controllers
         #endregion
 
         #region Product
-        [HttpGet("getproductall")]
+        [HttpGet("all")]
         [EnableQuery]
         public async Task<IActionResult> GetAllProduct()
         {
             return Ok(await _productService.GetAllProduct());
         }
 
-        [HttpGet("all2")]
+        [HttpGet("odata/all")]
         [EnableQuery]
         public async Task<IActionResult> GetAllProduct2()
         {
@@ -57,19 +60,19 @@ namespace RPG_Project.Controllers
             return Ok(await _productService.GetProductById(productId));
         }
 
-        [HttpPost("addproduct")]
+        [HttpPost()]
         public async Task<IActionResult> AddProduct(AddProductDto product)
         {
             return Ok(await _productService.AddProduct(product));
         }
 
-        [HttpPut("updateproduct")]
+        [HttpPut()]
         public async Task<IActionResult> UpdateProduct(ProductDto product)
         {
             return Ok(await _productService.UpdateProduct(product));
         }
 
-        [HttpPut("removeproduct")]
+        [HttpDelete("{productId}")]
         public async Task<IActionResult> RemoveProduct(int productId)
         {
             return Ok(await _productService.RemoveProduct(productId));

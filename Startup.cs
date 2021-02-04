@@ -208,8 +208,8 @@ namespace RPG_Project
         private IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Bulk>("Bulk");
-            builder.EntitySet<Product>("Product");
+            builder.EntitySet<Bulk>(nameof(Bulk));
+            builder.EntitySet<Product>(nameof(Product));
             return builder.GetEdmModel();
         }
         private void AddFormatters(IServiceCollection services)
